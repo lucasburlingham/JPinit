@@ -3,7 +3,6 @@
 <head>
     <link rel="icon" href="jpinit_128.png" type="image/png">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,21 +22,19 @@
     <form method="POST">
 
         <textarea class="textarea" placeholder="Your message to include with the link..."></textarea>
-        <input type="email">
-        <button type="submit">Send!</button>
+        <input type="email" id="email">
+        <button type="submit" onclick="start(email,longMessage,url)">Send!</button>
 
     </form>
 
 
     <script src="content.js">
+
+    function start(email,longMessage,url)
+        // <script src="content.js">
         // function (window, $, undefined) {
-
-
         // $('#sendbutton').on('click', function (event) {
-
-
         //     var currentURL;
-
         //     chrome.tabs.query({
         //             'active': true,
         //             'windowId': chrome.windows.WINDOW_ID_CURRENT
@@ -45,7 +42,6 @@
         //         function (tabs) {
         //             getCurrentURL(tabs[0].url);
         //         });
-
         //     function getCurrentURL(tab) {
         //         currentURL = tab;
         //     }
