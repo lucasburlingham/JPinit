@@ -21,56 +21,20 @@
         <image src="jpinit_128.png"></image>JPinit
     </h1>
 
-    <form method="POST">
+    <form method="POST" action="https://golca.org/resources/sendbyemail.php">
 
         <textarea class="textarea" placeholder="Your message to include with the link..."></textarea>
+        <br>
         <h1 class="subtitle">Recipient's Email</h1>
         <input type="email" id="email">
         <br>
         <h1 class="subtitle">URL to send</h1>
-        <input id="url">
+        <input id="url" name="url">
         <br>
-        <button type="submit" onclick="start(email,longMessage,url)">Send!</button>
+        <button type="submit">Send!</button>
 
     </form>
 
-
-    <script src="content.js">
-        function start(email, longMessage, url) {
-            // <script src="content.js">
-            // function (window, $, undefined) {
-            // $('#sendbutton').on('click', function (event) {
-            //     var currentURL;
-            //     chrome.tabs.query({
-            //             'active': true,
-            //             'windowId': chrome.windows.WINDOW_ID_CURRENT
-            //         },
-            //         function (tabs) {
-            //             getCurrentURL(tabs[0].url);
-            //         });
-            //     function getCurrentURL(tab) {
-            //         currentURL = tab;
-            //     }
-
-            var pageInfo = {
-                'recipient': email,
-                'link': url,
-                'subject': document.title,
-                'message': longMessage
-            };
-
-            var messageString = JSON.stringify(pageInfo);
-
-            chrome.runtime.sendMessage({
-                method: 'POST',
-                action: 'xhttp',
-                url: 'http://golca.org/resources/sendbyemail.php',
-                data: messageString
-            });
-
-            console.log(pageInfo);
-        }
-    </script>
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">

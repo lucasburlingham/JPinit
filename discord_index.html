@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="icon" href="jpinit_128.png" type="image/png">
+    <meta charset="utf-8">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <title>JPinit</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <h1 class="title jumbotron">
+        <image src="jpinit_128.png"></image>JPinit
+    </h1>
+
+    <form method="POST">
+
+        <textarea class="textarea" placeholder="Your message to include with the link..."></textarea>
+        <br>
+        <h1 class="subtitle">Recipient's Email</h1>
+        <input type="email" id="email">
+        <br>
+        <h1 class="subtitle">URL to send</h1>
+        <input id="url">
+        <br>
+        <button type="submit" onclick="start(email,longMessage,url)">Send!</button>
+
+    </form>
+
+
+    <script src="content.js">
+        function start(email, longMessage, url) {
+            var pageInfo = {
+                'recipient': email,
+                'link': url,
+                'subject': document.title,
+                'message': longMessage
+            };
+
+            var messageString = JSON.stringify(pageInfo);
+
+            chrome.runtime.sendMessage({
+                method: 'POST',
+                action: 'xhttp',
+                url: 'http://golca.org/resources/sendbyemail.php',
+                data: messageString
+            });
+
+            console.log(pageInfo);
+        }
+    </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    </script>
+
+</body>
+
+</html>
