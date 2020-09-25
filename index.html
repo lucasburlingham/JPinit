@@ -23,14 +23,14 @@
 
         <textarea class="textarea" placeholder="Your message to include with the link..."></textarea>
         <input type="email" id="email">
+        <input id="url">
         <button type="submit" onclick="start(email,longMessage,url)">Send!</button>
 
     </form>
 
 
     <script src="content.js">
-
-    function start(email,longMessage,url)
+        function start(email, longMessage, url)
         // <script src="content.js">
         // function (window, $, undefined) {
         // $('#sendbutton').on('click', function (event) {
@@ -51,8 +51,8 @@
             'link': url,
             'subject': document.title,
             'message': longMessage
-
         };
+
         var messageString = JSON.stringify(pageInfo);
 
         chrome.runtime.sendMessage({
@@ -63,8 +63,6 @@
         });
 
         console.log(pageInfo);
-
-        // })(window, jQuery);
     </script>
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
