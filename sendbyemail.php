@@ -5,8 +5,8 @@ if (isset($_POST["data"]) && !empty($_POST["data"])) {
     $message = $_POST["data"];
 }
 
-$arr = json_decode($dataJson, true);
-// $arr = json_decode($message, true);
+// $arr = json_decode($dataJson, true);
+$arr = json_decode($message, true);
 echo $arr["recipient"];
 echo "\n";
 echo $arr["link"];
