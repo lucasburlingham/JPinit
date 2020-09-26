@@ -21,19 +21,33 @@
         <image src="jpinit_128.png"></image>JPinit
     </h1>
 
-    <form method="POST" action="https://golca.org/resources/sendbyemail.php">
+    <!-- <form method="POST" action="https://golca.org/resources/sendbyemail.php">
 
-        <textarea class="textarea" placeholder="Your message to include with the link..."></textarea>
+        <textarea class="textarea" placeholder="Your message to include with the link..." id="message"></textarea>
         <br>
         <h1 class="subtitle">Recipient's Email</h1>
-        <input type="email" id="email">
+        <input type="email" id="email" name="email">
         <br>
         <h1 class="subtitle">URL to send</h1>
         <input id="url" name="url">
         <br>
         <button type="submit">Send!</button>
 
+    </form> -->
+
+    <form action="https://golca.org/jpinit/sendbyemail.php" method="post" style="text-align: center" id="data">
+        <h5>Recipient's Email</h5>
+        <input type="email" name="email">
+        <br>
+        <h5>Message to include with URL</h5>
+        <textarea name="message" id="message"></textarea>
+        <br>
+        <h5>URL to send</h5>
+        <input type="url" name="url">
+
+
     </form>
+    <button type="submit" form="data" value="Submit">Submit</button>
 
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
