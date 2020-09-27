@@ -3,17 +3,80 @@
 
 <head>
     <title>JPinit</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto');
+        body {
+            font-family: Ubuntu, Roboto;
+        }
+
+        #form {
+            text-align: center;
+            padding-right: 5px;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
-<body>
+<body class="back-row-toggle splat-toggle">
+    <div class="jumbotron">
 
-    <form action="http://cloud.golca.org/jpinit/backend.php" method="GET">
-        URL to send: <input type="url" name="url" id="url"/>
-        Recipient Email: <input type="email" name="email" id="email" />
-        Message to include: <input type="text" name="message" id="message">
-        <input type="submit" value="submit"/>
-    </form>
+        <h1 style="text-align: center"><img src="/icon48.png" alt="Red Pin">J<span
+                style="color: red">P</span>ini<span style="color: red">t</span></h1>
+    </div>
+    <div id="form">
+        <form action="http://cloud.golca.org/jpinit/backend.php" method="GET" id="inputForm">
+            URL to send:
+            <br>
+            <input type="url" name="url" id="formURL" />
+            <br>
+            <a href="" onclick="displayURL(url)"><small>Click to use Current Tab...</small></a>
+            <br>
+            <small>(Coming Soon...)</small>
+            <br>
+            <br>
+            Recipient Email:
+            <br>
+            <input type="email" name="email" placeholder="johndoe@example.com" />
+            <small id="emailHelp" class="form-text text-muted">We never store this information</small>
+            <br>
+            Message to include:
+            <br>
+            <textarea type="text" name="message"
+                placeholder="I thought that you might like this article - Jay Doe"></textarea>
+            <br>
+            <br>
+            <button type="submit" onclick="return changeText('submitbutton');" class="btn btn-primary"
+                id="submitButton">Submit</button>
+        </form>
+    </div>
+    <script>
+        function displayURL(url) {
+            
+            inputForm.elements["url"].value = url;
+            inputForm = document.forms['inputForm'];
+            chrome.tabs.query({
+                active: true,
+                lastFocusedWindow: true
+            }, tabs => {
+                let url = tabs[0].url;
+            });
+            document.getElementsByID('formURL').placeholder = url;
+        }
 
+        function changeText(submitId) {
+            var submit = document.getElementById(submitId);
+            submit.value = 'Loading...';
+            return false;
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
 </body>
+
 
 </html>
